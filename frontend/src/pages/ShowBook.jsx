@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 import BackButton from '../components/home/BackButton';
 import Spinner from '../components/Spinner';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+//const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = (import.meta.env.DEV
+  ? import.meta.env.VITE_LOCAL_API_URL
+  : import.meta.env.VITE_API_URL
+)
 
 const ShowBook = () => {
   const [book, setBook]= useState({});

@@ -8,7 +8,12 @@ import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
 
-const apiUrl = import.meta.env.VITE_API_URL;
+const apiUrl = (import.meta.env.DEV
+  ? import.meta.env.VITE_LOCAL_API_URL
+  : import.meta.env.VITE_API_URL
+)
+
+//const apiUrl = import.meta.env.VITE_API_URL;
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -17,6 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     setLoading(true);
+    console.log("🌐 API URL:", apiUrl); // kiểm tra thử
     axios
       //.get('http://localhost:5555/books')
       .get(`${apiUrl}books`)
