@@ -44,7 +44,7 @@ const EditBook = () => {
       .put(`${apiUrl}books/${id}`, data)
       .then(() => {
         setLoading(false);
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         setLoading(false);

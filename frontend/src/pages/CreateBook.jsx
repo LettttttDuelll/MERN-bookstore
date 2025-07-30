@@ -24,7 +24,7 @@ const CreateBook = () => {
       .post(`${apiUrl}books`,data)
       .then(() => {
         setLoading(false);
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         setLoading(false);
