@@ -40,7 +40,7 @@ const EditBook = () => {
     };
     setLoading(true);
     axios
-      .put(`http://localhost:5555/books/${id}`, data)
+      //.put(`http://localhost:5555/books/${id}`, data)
       .put(`${apiUrl}books/${id}`, data)
       .then(() => {
         setLoading(false);

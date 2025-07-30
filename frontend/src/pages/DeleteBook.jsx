@@ -17,7 +17,7 @@ const DeleteBook = () => {
       .delete(`${apiUrl}books/${id}`)
       .then(() => {
         setLoading(false);
-        navigate('/home');
+        navigate('/');
       })
       .catch((error) => {
         setLoading(false);
