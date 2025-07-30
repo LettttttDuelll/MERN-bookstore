@@ -14,7 +14,7 @@ const DeleteBook = () => {
     setLoading(true);
     axios
       //.delete(`http://localhost:5555/books/${id}`)
-      .delete(`${apiUrl}/books/${id}`)
+      .delete(`${apiUrl}books/${id}`)
       .then(() => {
         setLoading(false);
         navigate('/home');

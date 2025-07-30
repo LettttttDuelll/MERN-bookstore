@@ -21,7 +21,7 @@ const CreateBook = () => {
     setLoading(true);
     axios
       //.post('http://localhost:5555/books', data)
-      .post(`${apiUrl}/books`,data)
+      .post(`${apiUrl}books`,data)
       .then(() => {
         setLoading(false);
         navigate('/home');
