@@ -4,13 +4,17 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const DeleteBook = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { id } = useParams();
   const handleDeleteBook = () => {
     setLoading(true);
-    axios.delete(`http://localhost:5555/books/${id}`)
+    axios
+      //.delete(`http://localhost:5555/books/${id}`)
+      .delete(`${apiUrl}/${id}`)
       .then(() => {
         setLoading(false);
         navigate('/home');

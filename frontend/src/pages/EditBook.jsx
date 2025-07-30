@@ -4,6 +4,8 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const EditBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -14,7 +16,9 @@ const EditBook = () => {
 
   useEffect(()=>{
     setLoading(true);
-    axios.get(`http://localhost:5555/books/${id}`)
+    axios
+    //.get(`http://localhost:5555/books/${id}`)
+    .get(`${apiUrl}/${id}`)
     .then((response)=>{
       setAuthor(response.data.author);
       setPublishYear(response.data.publishYear)

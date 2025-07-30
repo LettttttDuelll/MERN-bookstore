@@ -4,6 +4,8 @@ import Spinner from '../components/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const CreateBook = () => {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
@@ -18,7 +20,8 @@ const CreateBook = () => {
     };
     setLoading(true);
     axios
-      .post('http://localhost:5555/books', data)
+      //.post('http://localhost:5555/books', data)
+      .post( `${apiUrl}/books`,data)
       .then(() => {
         setLoading(false);
         navigate('/home');
