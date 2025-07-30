@@ -18,7 +18,7 @@ const EditBook = () => {
     setLoading(true);
     axios
     //.get(`http://localhost:5555/books/${id}`)
-    .get(`${apiUrl}/${id}`)
+    .get(`${apiUrl}/books/${id}`)
     .then((response)=>{
       setAuthor(response.data.author);
       setPublishYear(response.data.publishYear)
