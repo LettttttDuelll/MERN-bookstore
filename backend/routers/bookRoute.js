@@ -3,6 +3,32 @@ import { Book } from '../models/bookModel.js';
 
 const router = express.Router();
 
+//route for search by name or author
+router.get('/search', async (req, res) => {
+    try {
+        const { q } = req.query;
+
+        let filter = {};
+
+        if (q) {
+            filter = {
+                $or: [
+                    { title: { $regex: q, $options: 'i' } },
+                    { author: { $regex: q, $options: 'i' } }
+                ]
+            };
+        }
+
+        const books = await Book.find(filter);
+
+        return res.status(200).json(books);
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 //route for save a new book
 router.post('/', async (req, res)=>{
     try {
@@ -103,5 +129,7 @@ router.delete('/:id', async(req,res)=>{
         res.status(500).send({message: error.message});
     }
 });
+
+
 
 export default router;
